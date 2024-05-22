@@ -1,0 +1,23 @@
+@mixin round-plate {
+  border-style: solid;
+  border-color: darkgray;
+  border-radius: 5px;
+  border-width: 1px;
+  padding: 1ex;
+}
+
+@mixin hover-animation {
+  opacity: 0.7;
+  transition: 0.2s;
+
+  &:enabled:hover {
+    opacity: 1;
+    box-shadow: 2px 2px 4px 1px #2222;
+  }
+}
+
+@mixin reset {
+  color: black;
+  font-family: Verdana, sans-serif;
+  font-size: small;
+}

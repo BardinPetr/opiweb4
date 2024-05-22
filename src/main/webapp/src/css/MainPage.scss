@@ -1,0 +1,76 @@
+@use "base";
+//@use "DataTable";
+@import "theme";
+@import 'primeflex/primeflex.scss';
+
+#plot-canvas {
+  @include round-plate;
+
+  width: 100%;
+  height: 50vh;
+}
+
+#table-input {
+  td {
+    input:not([type="checkbox"]),
+    select {
+      width: 100%;
+    }
+
+    padding: 1%;
+  }
+
+  width: 80%;
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+#table-result {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  > tbody > tr > td {
+    vertical-align: top;
+    padding: 1%;
+  }
+}
+
+#page-base {
+  height: 100%;
+
+  > tbody > tr > td {
+    width: 50%;
+    height: 100%;
+  }
+}
+
+span[id^="error-msg"] {
+  display: inline-block;
+  color: red;
+}
+
+#clear-btn,
+#send-btn {
+  width: 100%;
+}
+
+.user-display {
+  @include reset
+}
+
+.inline-form {
+  margin: 0;
+  display: inline;
+}
+
+.clock-container {
+  @include styleclass('col-4 col-offset-4');
+  text-align: center;
+}
+
+.table-card {
+  @include round-plate;
+}

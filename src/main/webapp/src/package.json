@@ -1,0 +1,23 @@
+{
+  "name": "lab1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "BardinPetr",
+  "license": "MIT",
+  "scripts": {
+    "build": "NODE_ENV=production node esbuild.mjs",
+    "start": "NODE_ENV=debug node esbuild.mjs"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "primefaces": "^13.0.0",
+    "primeflex": "^3.3.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.2",
+    "esbuild-plugin-sass": "^1.0.1",
+    "esbuild-sass-plugin": "^2.15.0",
+    "sass": "^1.66.1",
+    "tmp": "^0.2.1"
+  }
+}

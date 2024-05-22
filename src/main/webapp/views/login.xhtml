@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:l="http://lab3.itmo.bardinpetr.ru/facelets"
+>
+<f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
+    <h:head>
+        <h:outputStylesheet library="primefaces" name="components.css"/>
+        <h:outputStylesheet library="css" name="MainPage.css"/>
+    </h:head>
+    <h:body>
+        <div class="card">
+            <h:form id="loginform">
+                <div class="ui-fluid">
+                    <h1>Login</h1>
+                    <div class="field">
+                        <p:outputLabel for="login" value="Login:"/>
+                        <p:inputText
+                                id="login"
+                                type="text"
+                                value="#{loginBean.username}"
+                        >
+                            <p:clientValidator event="keyup"/>
+                        </p:inputText>
+                        <l:updatableMessage id="loginMsg" for="login"/>
+                    </div>
+                    <div class="field">
+                        <p:outputLabel for="password" value="Password:"/>
+                        <p:password
+                                id="password"
+                                value="#{loginBean.password}"
+                        >
+                            <p:clientValidator event="keyup"/>
+                        </p:password>
+                        <l:updatableMessage id="passMsg" for="password"/>
+                    </div>
+                    <p:growl id="growl"/>
+                    <div class="grid">
+                        <div class="col-6 lg:col-2">
+                            <p:commandButton
+                                    action="#{loginBean.doLogin}"
+                                    value="Login"
+                                    update="loginform"
+                                    ajax="false"
+                                    validateClient="true"
+                            />
+                        </div>
+                        <div class="col-6 lg:col-2">
+                            <p:commandButton
+                                    action="#{loginBean.doRegister}"
+                                    value="Register"
+                                    styleClass="ui-button-secondary"
+                                    update="loginform"
+                                    ajax="false"
+                                    validateClient="true"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</f:view>
+</html>

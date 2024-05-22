@@ -1,0 +1,43 @@
+.data-table {
+  border-collapse: collapse;
+  border-radius: 5px;
+  border-style: hidden;
+  box-shadow: 0 0 0 1px #666;
+  margin: 1%;
+
+  tbody {
+    width: 100%;
+  }
+
+  td {
+    text-align: center;
+    border-left: 1px solid #ccc;
+    padding: 5px;
+  }
+
+  tr {
+    &:first-child td {
+      color: white;
+      background: dimgrey;
+      border-bottom: 2px solid #666;
+    }
+
+    &:nth-child(2) {
+      background: lightcoral;
+    }
+
+    &:not(:first-child) {
+      &:nth-child(odd) {
+        background: #eee;
+      }
+
+      &:hover {
+        background: #fcc;
+      }
+
+      td {
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+}

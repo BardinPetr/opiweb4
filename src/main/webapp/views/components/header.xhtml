@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html"
+>
+<ui:composition>
+    <h:form id="nav">
+        <div class="card">
+            <p:menubar>
+                <p:menuitem
+                        value="Home"
+                        outcome="#{navigation.toHome()}"
+                        icon="pi pi-fw pi-home"
+                />
+                <p:menuitem
+                        value="Points"
+                        outcome="#{navigation.toPoints()}"
+                        icon="pi pi-fw pi-map-marker"
+                        disabled="#{!userSession.loggedIn}"
+                />
+                <p:menuitem
+                        value="Logout"
+                        rendered="#{userSession.loggedIn}"
+                        action="#{userSession.doLogout}"
+                        ajax="false"
+                        icon="pi pi-fw pi-sign-out"
+                        styleClass="ui-button-info"
+                />
+                <p:menuitem
+                        value="Login"
+                        rendered="#{!userSession.loggedIn}"
+                        outcome="#{navigation.toLogin()}"
+                        icon="pi pi-fw pi-sign-out"
+                        styleClass="ui-button-info"
+                />
+
+                <p:divider layout="vertical"/>
+
+                <f:facet name="options">
+                    <p:tag
+                            styleClass="mr-2"
+                            icon="pi pi-user"
+                            value="#{userSession.loggedIn ? userSession.user.name : 'not authorized'}"
+                            severity="#{userSession.loggedIn ? 'success' : 'warning'}"
+                    />
+                    <p:tag styleClass="mr-2" icon="pi pi-users" value="By: Бардин Петр Алексеевич"/>
+                    <p:tag styleClass="mr-2" icon="pi pi-users" value="P3219"/>
+                    <p:tag styleClass="mr-2" icon="pi pi-hashtag" value="2931"/>
+                </f:facet>
+            </p:menubar>
+        </div>
+    </h:form>
+</ui:composition>
+</html>

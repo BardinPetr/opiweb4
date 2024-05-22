@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+  <persistence-unit name="lab3">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <jta-data-source>java:/app/db/PostgresDS</jta-data-source>
+
+    <class>ru.bardinpetr.itmo.lab3.data.models.PointResult</class>
+    <class>ru.bardinpetr.itmo.lab3.data.models.User</class>
+    <class>ru.bardinpetr.itmo.lab3.data.models.Role</class>
+
+    <class>ru.bardinpetr.itmo.lab3.data.converters.DurationConverter</class>
+
+    <properties>
+      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+      <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+      <property name="eclipselink.logging.level" value="INFO"/>
+      <property name="javax.persistence.jtaDataSource" value="java:/app/db/PostgresDS" />
+    </properties>
+  </persistence-unit>
+</persistence>

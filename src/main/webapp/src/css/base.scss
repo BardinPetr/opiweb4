@@ -1,0 +1,35 @@
+@use "input";
+@import "theme";
+
+@import 'primeflex/primeflex.scss';
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  @include reset;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+}
+
+header {
+  width: 100%;
+  padding: 2%;
+  background-color: #ddd;
+
+  font: 20px cursive;
+  color: #004;
+}
+
+.card {
+  padding: 8px;
+  //margin: 1%;
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+				version="2.0">
+	<namespace>http://lab3.itmo.bardinpetr.ru/facelets</namespace>
+	<tag>
+		<tag-name>tableCellDoubleFormat</tag-name>
+		<source>../tags/tableCellDoubleFormat.xhtml</source>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+	<tag>
+		<tag-name>ajaxPushForm</tag-name>
+		<source>../tags/ajaxPushForm.xhtml</source>
+		<attribute>
+			<name>form</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>update</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>event</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+	<tag>
+		<tag-name>updatableMessage</tag-name>
+		<source>../tags/updatableMessage.xhtml</source>
+		<attribute>
+			<name>for</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+</facelet-taglib>

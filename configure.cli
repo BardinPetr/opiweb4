@@ -1,0 +1,10 @@
+# jakarta security
+/subsystem=undertow/application-security-domain=other:write-attribute(name=integrated-jaspi, value=false)
+
+# jpa
+module add --name=org.postgresql --resources=postgresql.jar --dependencies=javax.api,javax.transaction.api
+#/subsystem=datasources/jdbc-driver=oracle:add(driver-name="postgres",driver-module-name="org.postgres",driver-class-name=org.postgresql.Driver)
+#data-source add --jndi-name=java:/app/db/PostgresDS --name=PostgresDS --connection-url=jdbc:postgresql://localhost:5432/postgres --driver-name=postgres --password=pass --user-name=user
+#data-source enable --name=PostgresDS
+
+reload

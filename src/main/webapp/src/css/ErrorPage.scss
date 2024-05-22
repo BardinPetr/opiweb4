@@ -1,0 +1,11 @@
+@use "base";
+@import "theme";
+
+body {
+  text-align: center;
+}
+
+.error-msg {
+  font-size: medium;
+  color: red;
+}
