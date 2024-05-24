@@ -13,6 +13,7 @@ import ru.bardinpetr.itmo.lab3.data.models.PointResult;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Named("pointRepo")
 @RequestScoped
@@ -48,6 +49,15 @@ public class PointRepository implements Serializable {
     public List<PointResult> getAllPoints() {
         if (!session.isLoggedIn()) return List.of();
         return userDAO.getPointResults(session.getUser());
+    }
+
+    /**
+     * Retrieve all points in DB
+     */
+    public Stream<PointResult> getAllUsersPoints() {
+        return userDAO
+                .findAll().stream()
+                .flatMap(u -> userDAO.getPointResults(u).stream());
     }
 
     /**

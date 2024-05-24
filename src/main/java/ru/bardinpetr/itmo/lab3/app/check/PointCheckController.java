@@ -1,7 +1,6 @@
 package ru.bardinpetr.itmo.lab3.app.check;
 
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.faces.annotation.ManagedProperty;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import lombok.extern.slf4j.Slf4j;
@@ -11,12 +10,13 @@ import ru.bardinpetr.itmo.lab3.data.dto.PointCheckRequestDTO;
 import ru.bardinpetr.itmo.lab3.data.models.AreaConfig;
 import ru.bardinpetr.itmo.lab3.data.models.Point;
 import ru.bardinpetr.itmo.lab3.data.models.PointResult;
-import ru.bardinpetr.itmo.lab3.data.models.User;
 import ru.bardinpetr.itmo.lab3.data.repository.PointRepository;
+import ru.bardinpetr.itmo.lab3.mbean.PointCountMonitor;
+import ru.bardinpetr.itmo.lab3.mbean.PointTimeMonitor;
 
 import java.io.Serializable;
-import java.security.Principal;
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Named("pointCheckController")
@@ -32,6 +32,10 @@ public class PointCheckController implements Serializable {
     private PointCheckRequestDTO requestDTO;
     @Inject
     private UserSession session;
+    @Inject
+    private PointCountMonitor monitor;
+    @Inject
+    private PointTimeMonitor timeMonitor;
 
 
     public PointResult doCheck() {
@@ -42,11 +46,13 @@ public class PointCheckController implements Serializable {
         log.info("User {} requested {} {}", session.getUser().getName(), pointDTO, areaDTO);
 
         var startTime = LocalDateTime.now();
+        timeMonitor.click(startTime);
 
         var areaValid = pointDTO.validate();
         var requestValid = areaDTO.validate();
         if (!areaValid.isEmpty() || !requestValid.isEmpty()) {
             log.error("Validation failed for R={}/X={}/Y={}", areaDTO.getR(), pointDTO.getX(), pointDTO.getY());
+            monitor.newInvalid();
             return null;
         }
 
@@ -67,6 +73,7 @@ public class PointCheckController implements Serializable {
         res.setExecutionTime(Duration.between(startTime, res.getTimestamp()));
 
         pointRepository.storePointResult(res);
+        monitor.newValidPoint(res);
 
         return res;
     }

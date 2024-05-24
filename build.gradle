@@ -85,17 +85,17 @@ dependencies {
     testImplementation "org.dbunit:dbunit:2.7.3"
 }
 
-test {
-    useJUnitPlatform()
-    testLogging {
-        showStandardStreams = true
-        events "passed", "skipped", "failed"
-        exceptionFormat = "full"
-    }
-}
+//test {
+//    useJUnitPlatform()
+//    testLogging {
+//        showStandardStreams = true
+//        events "passed", "skipped", "failed"
+//        exceptionFormat = "full"
+//    }
+//}
 
 wildfly {
-    controller = "remote+http://localhost:9990"
+    controller = "remote+http://localhost:59883"
     username = "admin"
     password = "1234"
     deployment = "build/libs/${rootProject.name}-${version}.war"
